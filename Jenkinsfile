@@ -42,14 +42,14 @@ pipeline {
     stage('Compile back end') {
         steps {
             //Run Maven on Unix agent
-            sh 'cd ./back-end-repo'
-            sh "mvn clean compile"
+            sh "mvn -f ./back-end-repo/pom.xml clean install
+"
         }
     }
     stage('Test back end') {        
         steps { 
             sh '''sed '1 s/[^=]*$/dev/' src/main/resources/application.properties'''
-            sh 'mvn -D.maven.compile.skip test'
+            sh 'mvn -f ./back-end-repo/pom.xml -D.maven.compile.skip test'
             sh '''sed '1 s/[^=]*$/prod/' src/main/resources/application.properties'''}         
     }
     // maybe delete
