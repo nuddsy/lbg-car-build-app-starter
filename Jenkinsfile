@@ -47,9 +47,9 @@ pipeline {
     }
     stage('Test back end') {        
         steps { 
-            sh '''sed '1 s/[^=]*$/dev/' src/main/resources/application.properties'''
+            sh '''sed '1 s/[^=]*$/dev/' ./back-end-repo/src/main/resources/application.properties'''
             sh 'mvn -f ./back-end-repo/pom.xml -D.maven.compile.skip test'
-            sh '''sed '1 s/[^=]*$/prod/' src/main/resources/application.properties'''}         
+            sh '''sed '1 s/[^=]*$/prod/' ./back-end-repo/src/main/resources/application.properties'''}         
     }
     // maybe delete
     // stage('Package back end') {           
