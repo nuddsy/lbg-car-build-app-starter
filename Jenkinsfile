@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         registry = "change"
-        registryCredentials = "dockerhub_id_maybe_change"
+        registryCredentials = "dockerhub_id"
         dockerImage = ""
     }
 
