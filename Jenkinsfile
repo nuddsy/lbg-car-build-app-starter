@@ -28,7 +28,7 @@ pipeline {
           }
         }
     }
-    stage('Copy Repos') {
+    /*stage('Copy Repos') {
         steps {
           // Get some code from a GitHub repository
           sh 'pwd'
@@ -38,7 +38,7 @@ pipeline {
           sh 'cp -r back-end-repo/* ./lbg-car-build-app-starter/lbg-car-spring-app-starter/' // Ensure we are in the correct directory 
           sh 'cd ./lbg-car-build-app-starter'
         }
-    }
+    }*/
     stage('Compile back end') {
         steps {
             //Run Maven on Unix agent
