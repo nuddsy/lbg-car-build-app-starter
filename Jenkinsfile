@@ -43,7 +43,10 @@ pipeline {
         }
     }
     stage('Test back end') {        
-        steps { sh 'mvn -D.maven.compile.skip test'}         
+        steps { 
+            sh '''sed '1 s/[^=]*$/dev/' src/main/resources/application.properties'''
+            sh 'mvn -D.maven.compile.skip test'
+            sh '''sed '1 s/[^=]*$/prod/' src/main/resources/application.properties'''}         
     }
     // maybe delete
     // stage('Package back end') {           
@@ -71,20 +74,31 @@ pipeline {
     stage ('Build Docker Images'){
         steps{
             script {
-                sh 'docker-compose build'
-            }
+                     sh 'docker-compose build'
+                     }
         }
     }
     // check with Adam
     stage ("Push to Docker Hub"){
         steps {
             script {
-                sh 'docker-compose push'
+                withCredentials([usernamePassword(credentialsId: env.registryCredentials, passwordVariable: 'DOCKERHUB_PASS', usernameVariable: 'DOCKERHUB_USER')]) {
+
+                     sh 'echo $DOCKERHUB_PASS | docker login -u $DOCKERHUB_USER --password-stdin'
+                     sh 'docker-compose push'
+                     }
             }
         }
     }
-    // check with Adam
-    // stage ("Deploy to Server")
+    
+    stage ("Deploy to Server"){
+        steps{
+            sh 'scp -i ./id_rsa ./docker-compose.yaml jenkins@35.206.178.221:/home/jenkins'
+            sh '''ssh -i ./id_rsa jenkins@35.206.178.221 <<EOF
+            docker-compose up -d
+            '''
+        }
+    }
 
     // ask if Jenkins cleans up 
     stage ("Clean up"){
