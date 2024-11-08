@@ -58,14 +58,14 @@ pipeline {
     stage('Install front end') {
         steps {
             // Install the ReactJS dependencies
-            sh "npm --prefix ./front-end-repo install --legacy-peer-deps"
+            sh "yarn ./front-end-repo/package.json install "
 
         }
     }
     stage('Test front end') {
         steps {
           // Run the ReactJS tests
-          sh "npm --prefix ./front-end-repo test --legacy-peer-deps"
+          sh  "yarn ./front-end-repo/package.json test "
         }
     }
 

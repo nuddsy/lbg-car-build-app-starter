@@ -2,13 +2,15 @@ version: '3.8'
 services:
   backend:
     image: rain453/spring-app-image1:v1
-    build: .
+    build: 
+      context: ./back-end-repo
     ports:
       - target: 8000
         published: 8000
   frontend:
     image: rain453/frontend-react:v1
-    build: .
+    build: 
+      context: ./front-end-repo
     ports:
       - target: 80
         published: 80
