@@ -31,11 +31,11 @@ pipeline {
     stage('Copy Repos') {
         steps {
           // Get some code from a GitHub repository
-          sh 'mkdir -p /var/lib/jenkins/lbg-car-build-app-starter/lbg-car-spring-app-starter' 
-          sh 'mkdir -p /var/lib/jenkins/lbg-car-build-app-starter/lbg-car-react-app-starter' // Copy contents from additional repos to main repo 
-          sh 'cp -r front-end-repo/* /var/lib/jenkins/lbg-car-build-app-starter/lbg-car-react-app-starter/' 
-          sh 'cp -r back-end-repo/* /var/lib/jenkins/lbg-car-build-app-starter/lbg-car-spring-app-starter/' // Ensure we are in the correct directory 
-          sh 'cd /var/lib/jenkins/lbg-car-build-app-starter'
+          sh 'mkdir -p ./lbg-car-build-app-starter/lbg-car-spring-app-starter' 
+          sh 'mkdir -p ./lbg-car-build-app-starter/lbg-car-react-app-starter' // Copy contents from additional repos to main repo 
+          sh 'cp -r front-end-repo/* ./lbg-car-build-app-starter/lbg-car-react-app-starter/' 
+          sh 'cp -r back-end-repo/* ./lbg-car-build-app-starter/lbg-car-spring-app-starter/' // Ensure we are in the correct directory 
+          sh 'cd ./lbg-car-build-app-starter'
         }
     }
     stage('Compile back end') {
