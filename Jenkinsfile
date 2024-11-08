@@ -58,14 +58,14 @@ pipeline {
     stage('Install front end') {
         steps {
             // Install the ReactJS dependencies
-            sh "npm --prefix ./front-end-repo/package.json install"
+            sh "npm --prefix ./front-end-repo install"
 
         }
     }
     stage('Test front end') {
         steps {
           // Run the ReactJS tests
-          sh "npm --prefix ./front-end-repo/package.json build"
+          sh "npm --prefix ./front-end-repo run build"
         }
     }
 
