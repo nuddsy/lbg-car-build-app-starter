@@ -91,8 +91,8 @@ pipeline {
     
     stage ("Deploy to Server"){
         steps{
-            sh 'scp -i ./id_rsa ./docker-compose.yaml jenkins@35.206.178.221:/home/jenkins'
-            sh '''ssh -i ./id_rsa jenkins@35.206.178.221 <<EOF
+            sh 'scp -i /home/jenkins/id_rsa ./docker-compose.yaml jenkins@35.206.178.221:/home/jenkins'
+            sh '''ssh -i /home/jenkins/id_rsa jenkins@35.206.178.221 <<EOF
             docker-compose up -d
             '''
         }
