@@ -31,6 +31,7 @@ pipeline {
     stage('Copy Repos') {
         steps {
           // Get some code from a GitHub repository
+          sh 'pwd'
           sh 'mkdir -p ./lbg-car-build-app-starter/lbg-car-spring-app-starter' 
           sh 'mkdir -p ./lbg-car-build-app-starter/lbg-car-react-app-starter' // Copy contents from additional repos to main repo 
           sh 'cp -r front-end-repo/* ./lbg-car-build-app-starter/lbg-car-react-app-starter/' 
