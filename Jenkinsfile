@@ -42,8 +42,7 @@ pipeline {
     stage('Compile back end') {
         steps {
             //Run Maven on Unix agent
-            sh "mvn -f ./back-end-repo/pom.xml clean install
-"
+            sh "mvn -f ./back-end-repo/pom.xml clean install"
         }
     }
     stage('Test back end') {        
