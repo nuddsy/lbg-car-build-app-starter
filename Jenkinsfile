@@ -58,23 +58,16 @@ pipeline {
     stage('Install front end') {
         steps {
             // Install the ReactJS dependencies
-            sh 'cd ./front-end-repo'
-            sh "npm install"
+            sh "yarn --cwd ./front-end-repo install"
         }
     }
     stage('Test front end') {
         steps {
           // Run the ReactJS tests
-          sh "npm test"
+          sh "yarn --cwd ./front-end-repo test"
         }
     }
-    // maybe delete
-    stage('Build front end') {
-        steps {
-          // Run the ReactJS tests
-          sh "npm run build"
-        }
-    }
+    
     stage ('Build Docker Images'){
         steps{
             script {
