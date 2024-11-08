@@ -46,9 +46,9 @@ pipeline {
         steps { sh 'mvn -D.maven.compile.skip test'}         
     }
     // maybe delete
-    stage('Package back end') {           
-        steps { sh 'mvn -D.maven.test.skip -D.maven.compile.skip package'}       
-    }
+    // stage('Package back end') {           
+    //    steps { sh 'mvn -D.maven.test.skip -D.maven.compile.skip package'}       
+    //}
     stage('Install front end') {
         steps {
             // Install the ReactJS dependencies
