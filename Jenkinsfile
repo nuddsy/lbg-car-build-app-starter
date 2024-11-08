@@ -31,8 +31,10 @@ pipeline {
     stage('Copy Repos') {
         steps {
           // Get some code from a GitHub repository
-          sh 'cp -r front-end-repo/* lbg-car-build-app-starter/'
-          sh 'cp -r back-end-repo/* lbg-car-build-app-starter/'
+          sh 'mkdir ~/lbg-car-build-app-starter/lbg-car-spring-app-starter'
+          sh 'mkdir ~/lbg-car-build-app-starter/lbg-car-react-app-starter'
+          sh 'cp -r ~/front-end-repo/* lbg-car-build-app-starter/lbg-car-react-app-starter/'
+          sh 'cp -r back-end-repo/* lbg-car-build-app-starter/lbg-car-spring-app-starter/'
           sh 'cd lbg-car-build-app-starter'
         }
     }
