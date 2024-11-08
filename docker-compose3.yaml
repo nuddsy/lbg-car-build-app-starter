@@ -1,0 +1,39 @@
+version: "3.8"
+services:
+
+
+  front-end:
+    image: matt/lbg-car-react-app-starter
+    build: 
+      context: ./frontend
+    ports:
+      - target: 80
+        published: 80
+        protocol: tcp
+
+
+  back-end:
+    image: matt/lbg-car-spring-app-starter
+    build: 
+      context: ./back-end
+    ports:
+      - target: 8080
+        published: 8080
+        protocol: tcp
+
+      
+  mysql: 
+    image: mysql:8.0 
+    environment: 
+      MYSQL_ROOT_PASSWORD: 
+      example MYSQL_DATABASE: car_db 
+      MYSQL_USER: root 
+      MYSQL_PASSWORD: secretsecret 
+  volumes: 
+    - car_db:/var/lib/mysql 
+  ports: 
+    - "3306:3306" 
+
+
+volumes: 
+  car_db:
