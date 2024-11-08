@@ -58,14 +58,14 @@ pipeline {
     stage('Install front end') {
         steps {
             // Install the ReactJS dependencies
-            sh "cd ./front-end-repo && yarn install"
+            sh "yarn ./front-end-repo install"
 
         }
     }
     stage('Test front end') {
         steps {
           // Run the ReactJS tests
-          sh "cd ./front-end-repo && yarn build"
+          sh "yarn ./front-end-repo build"
         }
     }
 
