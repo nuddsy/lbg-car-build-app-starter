@@ -41,6 +41,7 @@ pipeline {
     stage('Compile back end') {
         steps {
             //Run Maven on Unix agent
+            sh 'cd ./lbg-car-spring-app-starter'
             sh "mvn clean compile"
         }
     }
@@ -57,6 +58,7 @@ pipeline {
     stage('Install front end') {
         steps {
             // Install the ReactJS dependencies
+            sh 'cd ./lbg-car-react-app-starter'
             sh "npm install"
         }
     }
